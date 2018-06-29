@@ -1,0 +1,78 @@
+$topmenu-item-bgcolor: #aaa;
+$topmenu-item-hover-bgcolor: #7a7a7a;
+$topmenu-item-color: #1a1a1a;
+$topmenu-item-hover-color: #fff;
+
+%menuBtn-shared {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 30px;
+}
+
+
+.menuBtn{
+	@extend %menuBtn-shared;
+	font-size: 20px;
+    color: #fff;
+    background-color: #000;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bolder;
+	text-align: center;
+}
+
+.underBtn{
+	@extend %menuBtn-shared;
+    height: 36px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0;
+    margin: 0;
+}
+
+.underBtn:checked ~ nav.topnav{
+	max-height: 500px;
+    transition: max-height .8s ease-out;
+}
+
+.underBtn:checked ~ .closeBtn{
+	display: inline-block;
+}
+
+.underBtn:checked ~ .openBtn{
+	display: none;
+}
+
+.closeBtn{
+	display: none;
+}
+
+.topnav{
+	overflow:hidden;
+	max-height: 0;
+	transition: max-height .8s ease-out;
+	ul{
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+	}
+
+	a{
+		color: $topmenu-item-color;
+		background-color:$topmenu-item-bgcolor;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+		display:block;
+		transition: 0.4s;
+	}
+	
+	a:hover{
+		background-color: $topmenu-item-hover-bgcolor;
+		color: $topmenu-item-hover-color;
+	}
+
+}
