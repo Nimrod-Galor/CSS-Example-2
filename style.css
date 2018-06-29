@@ -7,13 +7,13 @@ body {
   padding: 0;
   margin: 0; }
 
-.menuBtn, .underBtn {
+.topnav__menuBtn, .topnav__underBtn {
   position: absolute;
   top: 5px;
   left: 5px;
   width: 30px; }
 
-.menuBtn {
+.topnav__menuBtn {
   font-size: 20px;
   color: #fff;
   background-color: #000;
@@ -22,7 +22,7 @@ body {
   font-weight: bolder;
   text-align: center; }
 
-.underBtn {
+.topnav__underBtn {
   height: 36px;
   opacity: 0;
   cursor: pointer;
@@ -30,29 +30,29 @@ body {
   padding: 0;
   margin: 0; }
 
-.underBtn:checked ~ nav.topnav {
+.topnav__underBtn:checked ~ .topnav {
   max-height: 500px;
   transition: max-height .8s ease-out; }
 
-.underBtn:checked ~ .closeBtn {
+.topnav__underBtn:checked ~ .topnav__menuBtn--close {
   display: inline-block; }
 
-.underBtn:checked ~ .openBtn {
+.topnav__underBtn:checked ~ .topnav__menuBtn--open {
   display: none; }
 
-.closeBtn {
+.topnav__menuBtn--close {
   display: none; }
 
 .topnav {
   overflow: hidden;
   max-height: 0;
   transition: max-height .8s ease-out; }
-  .topnav ul {
+  .topnav .topnav__ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden; }
-  .topnav a {
+  .topnav .topnav__item__link {
     color: #1a1a1a;
     background-color: #aaa;
     text-align: center;
@@ -60,10 +60,23 @@ body {
     text-decoration: none;
     display: block;
     transition: 0.4s; }
-  .topnav a:hover {
+  .topnav .topnav__item__link:hover {
     background-color: #7a7a7a;
     color: #fff; }
 
+@media only screen and (min-width: 667px) and (min-height: 375px) {
+  .topnav__underBtn, .topnav__menuBtn--close, .topnav__menuBtn--open {
+    display: none; }
+
+  .topnav {
+    display: block;
+    max-height: 500px;
+    position: sticky;
+    top: 0; }
+
+  .topnav__item {
+    float: left;
+    width: 25%; } }
 .clearfix::after {
   content: "";
   clear: both;
@@ -73,7 +86,7 @@ body {
   width: 100%;
   padding: 50px; }
 
-.boxBg {
+.box__container {
   width: 200px;
   height: 200px;
   background: #ffffff url("bugs-bunny.png") no-repeat center center;
@@ -82,25 +95,12 @@ body {
   border: 1px solid #000;
   transition: all .9s; }
 
-.boxBg:hover {
+.box__container:hover {
   border: 1px solid #ff0000;
   box-shadow: 10px 10px 15px #aaaaaa;
   transform: scale(1.2) rotate(7deg);
   transition: all .5s; }
 
-@media only screen and (min-width: 667px) and (min-height: 375px) {
-  .menuBtn, .closeBtn, .openBtn {
-    display: none; }
-
-  .topnav {
-    display: block;
-    max-height: 500px;
-    position: sticky;
-    top: 0; }
-
-  li {
-    float: left;
-    width: 25%; } }
 @media only screen and (min-width: 480px) and (min-height: 320px) {
   .box {
     float: left;

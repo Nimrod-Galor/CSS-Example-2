@@ -3,7 +3,7 @@ $topmenu-item-hover-bgcolor: #7a7a7a;
 $topmenu-item-color: #1a1a1a;
 $topmenu-item-hover-color: #fff;
 
-%menuBtn-shared {
+%topnav__menuBtn-shared {
 	position: absolute;
 	top: 5px;
 	left: 5px;
@@ -11,8 +11,8 @@ $topmenu-item-hover-color: #fff;
 }
 
 
-.menuBtn{
-	@extend %menuBtn-shared;
+.topnav__menuBtn{
+	@extend %topnav__menuBtn-shared;
 	font-size: 20px;
     color: #fff;
     background-color: #000;
@@ -22,8 +22,8 @@ $topmenu-item-hover-color: #fff;
 	text-align: center;
 }
 
-.underBtn{
-	@extend %menuBtn-shared;
+.topnav__underBtn{
+	@extend %topnav__menuBtn-shared;
     height: 36px;
     opacity: 0;
     cursor: pointer;
@@ -32,20 +32,20 @@ $topmenu-item-hover-color: #fff;
     margin: 0;
 }
 
-.underBtn:checked ~ nav.topnav{
+.topnav__underBtn:checked ~ .topnav{
 	max-height: 500px;
     transition: max-height .8s ease-out;
 }
 
-.underBtn:checked ~ .closeBtn{
+.topnav__underBtn:checked ~ .topnav__menuBtn--close{
 	display: inline-block;
 }
 
-.underBtn:checked ~ .openBtn{
+.topnav__underBtn:checked ~ .topnav__menuBtn--open{
 	display: none;
 }
 
-.closeBtn{
+.topnav__menuBtn--close{
 	display: none;
 }
 
@@ -53,14 +53,14 @@ $topmenu-item-hover-color: #fff;
 	overflow:hidden;
 	max-height: 0;
 	transition: max-height .8s ease-out;
-	ul{
+	.topnav__ul{
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
 	}
 
-	a{
+	.topnav__item__link{
 		color: $topmenu-item-color;
 		background-color:$topmenu-item-bgcolor;
 		text-align: center;
@@ -70,9 +70,25 @@ $topmenu-item-hover-color: #fff;
 		transition: 0.4s;
 	}
 	
-	a:hover{
+	.topnav__item__link:hover{
 		background-color: $topmenu-item-hover-bgcolor;
 		color: $topmenu-item-hover-color;
 	}
 
+}
+
+@media only screen and (min-width: 667px) and (min-height:375px) {
+	.topnav__underBtn, .topnav__menuBtn--close, .topnav__menuBtn--open{display:none;}
+	
+	.topnav{
+		display: block;
+		max-height: 500px;
+		position: sticky;
+		top: 0;
+	}
+
+	.topnav__item{
+		float: left;
+		width: 25%;
+	}
 }

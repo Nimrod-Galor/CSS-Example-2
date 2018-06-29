@@ -27,7 +27,7 @@ body{
 	padding: 50px;
 }
 
-.boxBg{
+.box__container{
 	width: 200px;
 	height: 200px;
 	background: #ffffff url('bugs-bunny.png') no-repeat center center;
@@ -37,27 +37,13 @@ body{
 	transition: all .9s;
 }
 
-.boxBg:hover{
+.box__container:hover{
 	border:1px solid $img-hover-border-color;
 	box-shadow: 10px 10px 15px #aaaaaa;
 	transform: scale(1.2) rotate(7deg);
 	transition: all .5s;
 }
 
-@media only screen and (min-width: 667px) and (min-height:375px) {
-	.menuBtn, .closeBtn, .openBtn{display:none;}
-	.topnav{
-		display: block;
-		max-height: 500px;
-		position: sticky;
-		top: 0;
-	}
-
-	li {
-		float: left;
-		width: 25%;
-	}
-}
 
 @media only screen and (min-width: 480px) and (min-height:320px) {
 	.box {
