@@ -1,0 +1,36 @@
+// inline comment attached above elements
+
+// color definitions should be inherited from style guide.
+// consider using a scss map
+
+// some values are still hardcoded.
+$img-border-color: #000;
+$img-hover-border-color: #ff0000;
+
+.box {
+  width: 100%;
+  padding: 50px;
+  @media only screen and (min-width: 480px) {
+    // why not flex?
+    float: left;
+    width: 33%;
+    padding: 50px;
+  }
+  &__container {
+    width: 200px;
+    height: 200px;
+    // consider using a global variable for the image and path...
+    background: #ffffff url('bugs-bunny.png') no-repeat center center;
+    border-radius: 50%;
+    margin: 0 auto;
+    border: 1px solid $img-border-color;
+    transition: all .9s;
+    &:hover {
+      border: 1px solid $img-hover-border-color;
+      box-shadow: 10px 10px 15px #aaaaaa;
+      transform: scale(1.2) rotate(7deg);
+      // transition all, why?
+      transition: all .5s;
+    }
+  }
+}
