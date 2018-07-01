@@ -1,94 +1,99 @@
+// inline comment attached above elements
+
+// color definitions should be inherited from style guide.
+// consider using a scss map
+// consider add more variables..and less hardcoding
+
 $topmenu-item-bgcolor: #aaa;
 $topmenu-item-hover-bgcolor: #7a7a7a;
 $topmenu-item-color: #1a1a1a;
 $topmenu-item-hover-color: #fff;
 
 %topnav__menuBtn-shared {
-	position: absolute;
-	top: 5px;
-	left: 5px;
-	width: 30px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 30px;
 }
 
-
-.topnav__menuBtn{
-	@extend %topnav__menuBtn-shared;
-	font-size: 20px;
+.topnav {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .8s ease-out;
+  // we put media queries within UI we do not group them.
+  @media only screen and (min-width: 667px) {
+    display: block;
+    // why hard coded?
+    max-height: 500px;
+    position: sticky;
+    top: 0;
+  }
+  &__menuBtn {
+    @extend %topnav__menuBtn-shared;
+    font-size: 20px;
     color: #fff;
     background-color: #000;
     padding: 5px;
     border-radius: 5px;
     font-weight: bolder;
-	text-align: center;
-}
-
-.topnav__underBtn{
-	@extend %topnav__menuBtn-shared;
+    text-align: center;
+    &--close {
+      display: none;
+    }
+  }
+  &__underBtn {
+    @extend %topnav__menuBtn-shared;
     height: 36px;
     opacity: 0;
     cursor: pointer;
     z-index: 10;
     padding: 0;
     margin: 0;
-}
+    &:checked {
+      ~ .topnav {
+        max-height: 500px;
+        transition: max-height .8s ease-out;
+      }
+      ~ .topnav__menuBtn--close {
+        display: inline-block;
+      }
+      ~ .topnav__menuBtn--open {
+        display: none;
+      }
+    }
+  }
+  &__ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  &__item {
+   // why not flex?
+    float: left;
+    width: 25%;
+  }
+  // wrong BEM
+  &__item__link {
+    color: $topmenu-item-color;
+    background-color: $topmenu-item-bgcolor;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    display: block;
+    transition: 0.4s;
+    &:hover {
+      background-color: $topmenu-item-hover-bgcolor;
+      color: $topmenu-it
+    }
+  }
 
-.topnav__underBtn:checked ~ .topnav{
-	max-height: 500px;
-    transition: max-height .8s ease-out;
-}
-
-.topnav__underBtn:checked ~ .topnav__menuBtn--close{
-	display: inline-block;
-}
-
-.topnav__underBtn:checked ~ .topnav__menuBtn--open{
-	display: none;
-}
-
-.topnav__menuBtn--close{
-	display: none;
-}
-
-.topnav{
-	overflow:hidden;
-	max-height: 0;
-	transition: max-height .8s ease-out;
-	.topnav__ul{
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-		overflow: hidden;
-	}
-
-	.topnav__item__link{
-		color: $topmenu-item-color;
-		background-color:$topmenu-item-bgcolor;
-		text-align: center;
-		padding: 14px 16px;
-		text-decoration: none;
-		display:block;
-		transition: 0.4s;
-	}
-	
-	.topnav__item__link:hover{
-		background-color: $topmenu-item-hover-bgcolor;
-		color: $topmenu-item-hover-color;
-	}
-
-}
-
-@media only screen and (min-width: 667px) and (min-height:375px) {
-	.topnav__underBtn, .topnav__menuBtn--close, .topnav__menuBtn--open{display:none;}
-	
-	.topnav{
-		display: block;
-		max-height: 500px;
-		position: sticky;
-		top: 0;
-	}
-
-	.topnav__item{
-		float: left;
-		width: 25%;
-	}
+  &__underBtn,
+  // why '--open' and '--close'
+  &__menuBtn--close,
+  &__menuBtn--open {
+    @media only screen and (min-width: 667px) {
+      display: none;
+    }
+  }
 }
